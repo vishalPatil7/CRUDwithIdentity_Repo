@@ -1,0 +1,37 @@
+﻿@model List<CRUDwithIdentity.Models.Entities.BookEntity>
+
+
+<div class="d-flex flex-row justify-content-between">
+    <h1>Books</h1>
+    <a class="p-2 float-end" asp-action="AddOrEdit" asp-controller="Book">Create New</a>
+    @* <div> *@
+    @* <a class="float-end" asp-action="AddOrEdit" asp-controller="Book">Create New</a> *@
+    @* </div> *@
+</div>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var Book in Model)
+        {
+            <tr>
+                <td>@Book.BookID</td>
+                <td>@Book.Title</td>
+                <td>@Book.Author</td>
+                <td>@Book.Price</td>
+                <td>
+                    <a class="btn btn-primary" asp-controller="Book" asp-action="AddOrEdit" asp-route-id="@Book.BookID">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
